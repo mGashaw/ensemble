@@ -1,0 +1,37 @@
+//== Import wrapper configuration
+@import "config";
+
+// Wrapper styles
+#wrapper {
+    position: relative;
+    max-height: 100vh;
+    min-height: 100vh;
+}
+
+#pageWrapper {
+    margin-left: $page-wrapper-margin-left;
+    padding: 0 $page-wrapper-padding-x;
+    min-height: 100vh;
+    background-color: $white;
+    transition: $transition-medium;
+}
+
+//== Responsive styles
+@include media-breakpoint-up(md) {
+    .iconic-sidebar #pageWrapper {
+        margin-left: $iconic-sidebar-page-wrapper-margin-left;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .iconic-sidebar #pageWrapper, #pageWrapper {
+        margin-left: 0;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    #pageWrapper {
+        padding-left: $wrapper-padding-sm-x;
+        padding-right: $wrapper-padding-sm-x;
+    }
+}

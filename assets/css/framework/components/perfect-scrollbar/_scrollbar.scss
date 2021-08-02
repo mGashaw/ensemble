@@ -1,0 +1,47 @@
+//== Import scrollbar mixins
+@import "mixins";
+
+// Perfect scroll styles
+.ps {
+    position: relative;
+
+    .ps__rail-x, .ps__rail-y {
+        @include hover-focus {
+            background-color: transparent;
+            opacity: 1;
+        }
+        &.ps--clicking {
+            background-color: transparent;
+            opacity: 1;
+        }
+    }
+}
+
+.ps__rail-y,
+.ps__rail-x {
+    width: .25rem;
+    z-index: 1;
+
+    @include hover-focus {
+        > .ps__thumb-y {
+            width: .25rem;
+        }
+    }
+
+    &.ps--clicking .ps__thumb-y {
+        width: .25rem;
+    }
+}
+
+.ps__thumb-y {
+    right: 0;
+    width: .25rem;
+}
+
+.ps:hover, .ps--focus {
+    > .ps__rail-x, > .ps__rail-y {
+        opacity: 1;
+    }
+}
+
+@include scrollbar-scheme(theme-color());

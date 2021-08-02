@@ -1,0 +1,65 @@
+//== Import search configuration
+@import "config";
+
+//== Import left sidebar configuration
+@import "../sidebar/left/config";
+
+// Styling for search form
+#searchForm {
+    position: relative;
+    flex: 1;
+
+    .btn {
+        @include absolute(top .625rem left 0);
+        color: $white;
+        padding: 0 !important;
+        font-size: $icon-size-base;
+    }
+
+    .form-control {
+        background-color: transparent !important;
+        border: none;
+        color: $white;
+        padding-left: 1.75rem;
+        @include placeholder($white);
+    }
+}
+
+// Styling for search card
+.search-card {
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    left: -#{map-get($header, padding-x)};
+    background-color: $white;
+    border-radius: map-get($search-ui, radius);
+    max-height: map-get($search-ui, height);
+    padding: map-get($search-ui, padding);
+    margin-top: .5rem;
+    color: theme-color(secondary);
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition-long;
+}
+
+.open-search {
+    #overlay {
+        z-index: $zIndex-header - 1;
+    }
+
+    #sidebar {
+        z-index: $zIndex-header - 2;
+    }
+
+    .search-card {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+//== Responsive styles
+@include media-breakpoint-down(md) {
+    .search-card {
+        left: -(map-get($header, padding-x) + map-get($toggle-menu, width) + 1rem);
+    }
+}

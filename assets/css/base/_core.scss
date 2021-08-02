@@ -1,0 +1,210 @@
+p {
+    margin-bottom: 1rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: theme-color(secondary);
+    transition: $transition-medium;
+    @include hover-focus-active {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+// Backdrop style
+.backdrop {
+    @include fixed(top 0 right 0 bottom 0 left 0);
+    background: rgba($black, .6);
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition-long;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+// Modal style
+.modal-content {
+    border: none;
+}
+
+#lang {
+    .modal-dialog {
+        max-width: 24rem;
+    }
+
+    .list-group {
+        flex-direction: row;
+    }
+}
+
+#login .modal-dialog,
+#signIn .modal-dialog {
+    max-width: 400px;
+}
+
+.social-login {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    border-bottom: 1px solid $gray-300;
+
+    &:after {
+        content: 'OR';
+        display: inline-block;
+        @include absolute(bottom -.875rem left 50%);
+        padding: .25rem .5rem;
+        margin-left: -1.125rem;
+        z-index: 2;
+        background-color: $white;
+    }
+}
+
+// Styling for page banners
+.banner {
+    background-size: cover;
+    background-position: center center;
+    height: $banner-height;
+    margin: 0 #{-$wrapper-padding-x};
+    position: relative;
+    z-index: 1;
+
+    @include before-after {
+        @include pseudoContent
+    }
+
+    &:before {
+        @include absolute(top 0 right 0 bottom 0 left 0);
+        background-color: rgba($white, .3);
+    }
+
+    &:after {
+        @include absolute(right 0 bottom 0 left 0);
+        height: 10rem;
+        background: linear-gradient(to bottom, rgba($white, 0) 0%, rgba($white, 1) 78%, rgba($white, 1) 100%);
+    }
+}
+
+@for $i from 1 through length($banner-bg-list) {
+    .bg-#{nth($banner-bg-list, $i)} {
+        background-image: url('#{$banner-bg-image-url}#{nth($banner-bg-list, $i)}.jpg');
+    }
+}
+
+// Page style
+.main-container {
+    position: relative;
+    z-index: 2;
+    margin-top: -6rem;
+    min-height: calc(100vh / 3.26);
+    &.under-banner-content {
+        margin-top: 0;
+    }
+}
+
+.heading {
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 4rem !important;
+}
+
+// Background style
+.bg-img {
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+}
+
+.bg-img-radius-lg {
+    border-radius: $radius-lg;
+}
+
+.bg-img-radius-md {
+    border-radius: $radius-md;
+}
+
+.bg-img-radius-sm {
+    border-radius: $radius-sm;
+}
+
+.bg-blur {
+    @include absolute(top 50% right 0 left 0);
+    padding: 1rem;
+    transform: translateY(-50%);
+    font-weight: map-get($font-weight, medium);
+    font-size: 1rem;
+    text-align: center;
+    color: $white;
+    background-color: rgba($black, .5);
+}
+
+// Event card style
+.event {
+    position: relative;
+
+    &:after {
+        @include pseudoContent;
+        @include absolute(right 0 bottom 0 left 0);
+        height: 45%;
+        background: linear-gradient(to bottom, rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 50%, rgba(0,0,0, 1) 100%);
+        z-index: 1;
+    }
+
+    .event-content {
+        color: $white;
+        @include absolute(right 0 bottom 0 left 0);
+        z-index: 2;
+
+        h6 {
+            color: $white;
+        }
+    }
+}
+
+.event-v {
+    min-height: $event-v-height;
+}
+
+.event-h {
+    min-height: $event-h-height;
+}
+
+// Styling for common elements
+.stars {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.flex-basis-0 {
+    flex-basis: 0;
+}
+
+.table {
+    th, td {
+        vertical-align: middle;
+    }
+}
+
+.custom-file-label, .custom-file-label::after {
+    padding: .75rem;
+}
+
+.custom-file-label::after {
+    height: 100%;
+}
+
+.setting-label {
+    max-width: calc(100% - 100px);
+}

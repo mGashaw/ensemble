@@ -1,0 +1,11 @@
+.countdown {
+    @include flexBox();
+    align-items: center;
+    font-weight: map-get($font-weight, medium);
+    font-size: 1rem;
+
+    .time-separate {
+        padding-right: .25rem;
+        padding-left: .25rem;
+    }
+}
