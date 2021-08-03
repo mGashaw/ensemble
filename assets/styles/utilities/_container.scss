@@ -1,0 +1,9 @@
+@use '../abstracts' as *;
+
+.container {
+  margin: 0 1.25rem;
+  max-width: 100%;
+  @include mq(md) {
+    margin: 0 2.5rem;
+  }
+}

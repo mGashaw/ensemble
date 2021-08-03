@@ -1,0 +1,175 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
+.top-bar {
+  background-color: rgba($gray-800, 0.75);
+  position: absolute;
+  height: 72px;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  &__inner {
+    @extend .container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  &__nav {
+    display: flex;
+    &--prev,
+    &--forward {
+      background-color: $gray-600;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+      transition: background-color 0.3s ease-in-out;
+      svg {
+        color: $white;
+      }
+      &:hover {
+        background-color: $gray-500;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $white;
+      }
+    }
+  }
+  @include mq(lg) {
+    grid-area: main-view;
+  }
+}
+
+.user-settings {
+  &__inner {
+    min-width: 150px;
+    position: relative;
+  }
+  &__btn {
+    background-color: $gray-600;
+    border: none;
+    border-radius: $border-radius;
+    color: $white;
+    cursor: pointer;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    height: 2rem;
+    min-width: 2rem;
+    width: 100%;
+    padding: 2px;
+    transition: background-color 0.5s $ease;
+    &:hover,
+    &:focus {
+      background-color: $gray-500;
+      outline: none;
+    }
+    &--img {
+      height: 1.75rem;
+      width: 1.75rem;
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &--name {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.025em;
+      line-height: 1.75;
+      margin-left: 0.75rem;
+      max-width: 110px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      pointer-events: none;
+    }
+    svg {
+      display: block;
+      margin: 0 0.5rem;
+      margin-left: auto;
+      transition: transform 0.3s ease-in-out;
+    }
+    &[aria-expanded='true'] svg {
+      transform: rotate(180deg);
+    }
+  }
+  &__menu {
+    background-color: $gray-700;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    pointer-events: auto;
+    z-index: 8;
+    width: 100%;
+    &[aria-hidden='false'] {
+      display: initial;
+    }
+    &--item span,
+    &--item button {
+      background-color: transparent;
+      display: block;
+      font-size: 0.875rem;
+      line-height: 2rem;
+      letter-spacing: 0.04em;
+      color: $white;
+      width: 100%;
+      padding: 0.25em 0.75em;
+      transition: background-color 0.3s ease-in-out;
+      &:hover {
+        background-color: $gray-600;
+      }
+    }
+    &--item button {
+      border: none;
+      text-align: left;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    &--item span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      svg {
+        font-size: 1rem;
+      }
+      &.is-premium svg {
+        color: $secondary;
+      }
+      &.not-premium svg {
+        color: $primary;
+      }
+    }
+    &--item a {
+      display: block;
+    }
+    &--item + &--item {
+      border-top: 1px solid $gray-800;
+    }
+  }
+}

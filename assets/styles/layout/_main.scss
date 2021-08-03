@@ -1,0 +1,64 @@
+@use '../abstracts' as *;
+
+.main-view {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow-y: scroll;
+  padding: calc(72px + 1.5rem) 0 calc(80px + 2.5rem);
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  section + section {
+    margin-top: 2.25rem;
+  }
+  @include mq(md) {
+    padding: calc(72px + 1.5rem) 0 calc(80px + 3.5rem);
+    section + section {
+      margin-top: 2.5rem;
+    }
+  }
+  @include mq(lg) {
+    grid-area: main-view;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    padding: calc(72px + 2.5rem) 0 3.5rem;
+    section {
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+.has-now-playing-bar .main-view {
+  padding-bottom: calc(80px + 70px + 2.5rem);
+  @include mq(md) {
+    padding-bottom: calc(80px + 70px + 3.5rem);
+  }
+  @include mq(lg) {
+    padding-bottom: calc(100px + 3.5rem);
+  }
+}
+
+@-moz-document url-prefix() {
+  .main-view > :last-child {
+    margin-bottom: calc(80px + 2.5rem);
+    @include mq(md) {
+      margin-bottom: calc(80px + 3.5rem);
+    }
+    @include mq(lg) {
+      margin-bottom: 3.5rem;
+    }
+  }
+  .has-now-playing-bar .main-view > :last-child {
+    margin-bottom: calc(80px + 70px + 2.5rem);
+    @include mq(md) {
+      margin-bottom: calc(80px + 70px + 3.5rem);
+    }
+    @include mq(lg) {
+      margin-bottom: calc(100px + 3.5rem);
+    }
+  }
+}

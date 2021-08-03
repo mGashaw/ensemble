@@ -1,0 +1,157 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+$side-padding: 1.75rem;
+
+.navbar {
+  background: $gray-700;
+  border-top: 1px solid $gray-500;
+  height: 80px;
+  padding: 0.875rem 1rem 0.875rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  &__menu {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &--item {
+      flex-grow: 1;
+      & + & {
+        margin-left: 0.25em;
+      }
+    }
+    &--item a {
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0.25em;
+      svg {
+        color: $white;
+        transition: transform 0.5s ease-in-out;
+      }
+      span {
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        font-weight: 300;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+      &:hover svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &__logo {
+    display: block;
+    padding: 0 $side-padding;
+    img {
+      height: 40px;
+      width: auto;
+    }
+  }
+  &__playlists {
+    padding: 0 $side-padding;
+    overflow: auto;
+    height: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &--title {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+    }
+    &--list {
+      list-style: none;
+      margin: 0.5rem 0 0;
+      height: 100%;
+      padding: 0;
+    }
+    &--list-item + &--list-item {
+      margin-top: 0.625rem;
+    }
+    &--list-item a {
+      display: block;
+    }
+    p,
+    a {
+      font-size: 0.875rem;
+      letter-spacing: 0.0375em;
+    }
+    p {
+      color: $gray-100;
+      margin-top: 0.625rem;
+    }
+  }
+  @include mq(lg) {
+    &__menu {
+      display: block;
+      height: auto;
+      margin: 1.5rem 0;
+      &--item {
+        padding: 0 0.5rem;
+      }
+      &--item + &--item {
+        margin-left: 0;
+      }
+      &--item a {
+        background-color: transparent;
+        border-radius: 0.5rem;
+        color: inherit;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 3rem;
+        padding: 0 calc(#{$side-padding} - 0.5rem);
+        transition: background-color 0.5s $ease;
+        span {
+          font-size: 0.875rem;
+          letter-spacing: 0.15em;
+          font-weight: 400;
+          margin: 0;
+        }
+        svg {
+          margin-right: 1rem;
+          font-size: 1.675rem;
+          transition: transform 0.5s ease-in-out;
+        }
+        &:hover {
+          background-color: $gray-700;
+          text-decoration: none;
+          svg {
+            transform: scale(1.1);
+          }
+        }
+        &.active {
+          background-color: $gray-700;
+        }
+      }
+    }
+  }
+}
+
+.navbar-desktop {
+  background: $black;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  grid-area: navbar;
+  height: 100vh;
+  width: 250px;
+  padding: 2rem 0 calc(100px + 3rem);
+  position: initial;
+  z-index: 2;
+}

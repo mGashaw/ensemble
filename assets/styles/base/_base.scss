@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+body {
+  background-color: $gray-800;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  position: relative;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@include mq(lg) {
+  #app {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      'navbar main-view'
+      'now-playing-bar now-playing-bar';
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+  }
+}
