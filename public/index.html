@@ -18,6 +18,7 @@
     <link href="../assets/css/styles.bundle.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/styles.css">
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.8.1/firebase-app.js"></script>
@@ -41,8 +42,10 @@
 
 <body>
 
-    <h1>Login to Ensemble</h1>
-    <a href="./home.html">Sign in</a>
+    <div id="login">
+        <h1>This is an example of the Authorization Code flow</h1>
+        <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

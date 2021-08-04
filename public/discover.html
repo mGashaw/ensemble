@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensemble</title>
+    <link rel="stylesheet" href="./assets/styles/styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <nav aria-label="Main menu" class="navbar navbar-desktop">
+            <ul class="navbar__menu">
+                <li class="navbar__menu--item"><a class="" href="dashboard.html"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                        </svg><span>Dashboard</span></a></li>
+                <li class="navbar__menu--item"><a class="" href="favorites.html"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z">
+                            </path>
+                        </svg><span>Favorites</span></a></li>
+                <li class="navbar__menu--item"><a class="" href="discover.html"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z">
+                            </path>
+                        </svg><span>Discover</span></a></li>
+                <li class="navbar__menu--item"><a class="" href="search.html"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                            </path>
+                        </svg><span>Search</span></a></li>
+            </ul>
+            <div class="navbar__playlists" aria-label="User playlists">
+                <h1 class="navbar__playlists--title">Playlists</h1>
+                <ul class="navbar__playlists--list">
+                    <li class="navbar__playlists--list-item"><a href="/playlist/37i9dQZF1DX7QOv5kjbU68">This Is
+                            Drake</a></li>
+                </ul>
+            </div>
+        </nav>
+        <header class="top-bar">
+            <div class="top-bar__inner">
+                <nav class="top-bar__nav"><button class="top-bar__nav--prev" aria-label="Go back" title="Go back"><svg
+                            class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                        </svg></button><button class="top-bar__nav--forward" aria-label="Go forward"
+                        title="Go forward"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></button></nav>
+                <div class="user-settings">
+                    <div class="user-settings__inner"><button class="user-settings__btn" aria-label="Toggle settings"
+                            aria-expanded="false">
+                            <figure class="user-settings__btn--img" title="Marcus"><img
+                                    src="data:image/png;base64,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"
+                                    alt="Marcus" aria-hidden="false" width="30" height="30"></figure><span
+                                class="user-settings__btn--name">Marcus</span><svg class="MuiSvgIcon-root"
+                                focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 10l5 5 5-5z"></path>
+                            </svg>
+                        </button>
+                        <ul class="user-settings__menu" aria-hidden="true">
+                            <li class="user-settings__menu--item"><span class="is-premium">Premium <svg
+                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
+                                        </path>
+                                    </svg> </span></li>
+                            <li class="user-settings__menu--item"><button>Log out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="discover" class="main-view">
+            <header class="page-header">
+                <h1 class="page-header__title">Discover new music</h1>
+            </header>
+            <section class="grid-section">
+                <header class="grid-section__header">
+                    <h2 class="grid-section__header--title">Recommended for you</h2><a
+                        class="grid-section__header--link" href="/discover/recommendations"><span>View all</span><svg
+                            class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></a>
+                </header>
+                <ul class="grid-section__grid">
+                    <li>Nothing to display</li>
+                </ul>
+            </section>
+            <section class="grid-section">
+                <header class="grid-section__header">
+                    <h2 class="grid-section__header--title">New albums &amp; singles</h2><a
+                        class="grid-section__header--link" href="/discover/new-releases"><span>View all</span><svg
+                            class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></a>
+                </header>
+                <ul class="grid-section__grid">
+                    <li class="card"><a class="card__inner" aria-label="Happier Than Ever"
+                            href="/album/0JGOiO34nwfUdDrD612dOp">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+                                    alt="Happier Than Ever" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play album" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Happier Than Ever</h3>
+                                <p class="card__body--desc">2021 · album</p>
+                            </div>
+                        </a></li>
+                    <li class="card"><a class="card__inner" aria-label="Skate" href="/album/4AsebSFI8STBGRcVUJ3Tmo">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b273ebd6d297f2cdeeadb58243a0" alt="Skate"
+                                    loading="lazy" width="300" height="300"><button class="play-btn"
+                                    aria-label="Play single" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Skate</h3>
+                                <p class="card__body--desc">2021 · single</p>
+                            </div>
+                        </a></li>
+                    <li class="card"><a class="card__inner" aria-label="Stand For Myself"
+                            href="/album/1aF9Xjtg1d1wwsE4hRAkQV">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b2731f1980f8fcad6e4f9e497585"
+                                    alt="Stand For Myself" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play album" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Stand For Myself</h3>
+                                <p class="card__body--desc">2021 · album</p>
+                            </div>
+                        </a></li>
+                    <li class="card"><a class="card__inner" aria-label="Bobby Tarantino III"
+                            href="/album/2GlNXmYUojl1juGRExE1Sf">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b2731a37c926465567557e294c51"
+                                    alt="Bobby Tarantino III" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play album" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Bobby Tarantino III</h3>
+                                <p class="card__body--desc">2021 · album</p>
+                            </div>
+                        </a></li>
+                    <li class="card"><a class="card__inner" aria-label="Take the Sadness Out of Saturday Night"
+                            href="/album/6SPUtbeCQiPGej0t5RBasE">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b27362f705929d4e45f538005c67"
+                                    alt="Take the Sadness Out of Saturday Night" loading="lazy" width="300"
+                                    height="300"><button class="play-btn" aria-label="Play album" tabindex="-1"><svg
+                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Take the Sadness Out of Saturday Night</h3>
+                                <p class="card__body--desc">2021 · album</p>
+                            </div>
+                        </a></li>
+                    <li class="card"><a class="card__inner" aria-label="F*CK LOVE 3+: OVER YOU"
+                            href="/album/576UTio7xgY7YUxrHMzxeI">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67616d0000b273b4d59e6fa7e5e7cbc57ac33a"
+                                    alt="F*CK LOVE 3+: OVER YOU" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play album" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">F*CK LOVE 3+: OVER YOU</h3>
+                                <p class="card__body--desc">2021 · album</p>
+                            </div>
+                        </a></li>
+                </ul>
+            </section>
+            <section class="grid-section">
+                <header class="grid-section__header">
+                    <h2 class="grid-section__header--title">Put Tuesday to rest</h2><a
+                        class="grid-section__header--link" href="/discover/featured-playlists"><span>View all</span><svg
+                            class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></a>
+                </header>
+                <ul class="grid-section__grid">
+                    <li class="card card-playlist"><a class="card__inner" aria-label="Dark &amp; Stormy"
+                            href="/playlist/37i9dQZF1DX2pSTOxoPbx9">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f00000003a6e2870c97bde5e2719c20b8"
+                                    alt="Dark &amp; Stormy" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play playlist" tabindex="-1"><svg
+                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                    <li class="card card-playlist"><a class="card__inner" aria-label="All-Nighter"
+                            href="/playlist/37i9dQZF1DX692WcMwL2yW">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f0000000358db4ac7cd52e1a5b2c9d84b"
+                                    alt="All-Nighter" loading="lazy" width="300" height="300"><button class="play-btn"
+                                    aria-label="Play playlist" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                    <li class="card card-playlist"><a class="card__inner" aria-label="Night Pop"
+                            href="/playlist/37i9dQZF1DXbcP8BbYEQaO">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f0000000398d45e167e4a8eee5ca89336"
+                                    alt="Night Pop" loading="lazy" width="300" height="300"><button class="play-btn"
+                                    aria-label="Play playlist" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                    <li class="card card-playlist"><a class="card__inner" aria-label="Deep Sleep"
+                            href="/playlist/37i9dQZF1DWYcDQ1hSjOpY">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f00000003c601a6a746366286845b8fda"
+                                    alt="Deep Sleep" loading="lazy" width="300" height="300"><button class="play-btn"
+                                    aria-label="Play playlist" tabindex="-1"><svg class="MuiSvgIcon-root"
+                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                    <li class="card card-playlist"><a class="card__inner" aria-label="Country Nights"
+                            href="/playlist/37i9dQZF1DWXi7h4mmmkzD">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f00000003ea587c567a887f15f47202a6"
+                                    alt="Country Nights" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play playlist" tabindex="-1"><svg
+                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                    <li class="card card-playlist"><a class="card__inner" aria-label="Jazz for Sleep"
+                            href="/playlist/37i9dQZF1DXa1rZf8gLhyz">
+                            <figure class="card__image"><img
+                                    src="https://i.scdn.co/image/ab67706f0000000308e683238978c7d578b96046"
+                                    alt="Jazz for Sleep" loading="lazy" width="300" height="300"><button
+                                    class="play-btn" aria-label="Play playlist" tabindex="-1"><svg
+                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z"></path>
+                                    </svg><span>Play</span></button></figure>
+                        </a></li>
+                </ul>
+            </section>
+            <section class="grid-section">
+                <header class="grid-section__header">
+                    <h2 class="grid-section__header--title">Genres &amp; themes</h2><a
+                        class="grid-section__header--link" href="/discover/categories"><span>View all</span><svg
+                            class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></a>
+                </header>
+                <ul class="grid-section__grid">
+                    <li class="card card-category"><a class="card__inner" aria-label="Top Lists"
+                            href="/discover/categories/toplists">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/media/derived/toplists_11160599e6a04ac5d6f2757f5511778f_0_0_275_275.jpg"
+                                    alt="Top Lists" loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Top Lists</h3>
+                            </div>
+                        </a></li>
+                    <li class="card card-category"><a class="card__inner" aria-label="Hip Hop"
+                            href="/discover/categories/hiphop">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/media/original/hip-274_0a661854d61e29eace5fe63f73495e68_274x274.jpg"
+                                    alt="Hip Hop" loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Hip Hop</h3>
+                            </div>
+                        </a></li>
+                    <li class="card card-category"><a class="card__inner" aria-label="Pop"
+                            href="/discover/categories/pop">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/media/derived/pop-274x274_447148649685019f5e2a03a39e78ba52_0_0_274_274.jpg"
+                                    alt="Pop" loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Pop</h3>
+                            </div>
+                        </a></li>
+                    <li class="card card-category"><a class="card__inner" aria-label="Country"
+                            href="/discover/categories/country">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/images/a2e0ebe2ebed4566ba1d8236b869241f.jpeg" alt="Country"
+                                    loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Country</h3>
+                            </div>
+                        </a></li>
+                    <li class="card card-category"><a class="card__inner" aria-label="Rock"
+                            href="/discover/categories/rock">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/media/derived/rock_9ce79e0a4ef901bbd10494f5b855d3cc_0_0_274_274.jpg"
+                                    alt="Rock" loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Rock</h3>
+                            </div>
+                        </a></li>
+                    <li class="card card-category"><a class="card__inner" aria-label="Happier Than Ever"
+                            href="/discover/categories/happier_than_ever">
+                            <figure class="card__image"><img
+                                    src="https://t.scdn.co/images/789ca4b7af334c239a74d2b859860ed3"
+                                    alt="Happier Than Ever" loading="lazy" width="300" height="300"></figure>
+                            <div class="card__body">
+                                <h3 class="card__body--title">Happier Than Ever</h3>
+                            </div>
+                        </a></li>
+                </ul>
+            </section>
+        </main>
+        <footer class="now-playing-bar desktop">
+            <div class="now-playing-bar__column">
+                <div class="currently-playing"><img
+                        src="https://i.scdn.co/image/ab67616d00001e0252c75ed37313b889447011ef"
+                        alt="Laugh Now Cry Later (feat. Lil Durk)" class="currently-playing__cover" loading="lazy"
+                        width="300" height="300">
+                    <div class="currently-playing__details">
+                        <div class="currently-playing__details--track">Laugh Now Cry Later (feat. Lil Durk)</div>
+                        <div class="currently-playing__details--artist">Drake, Lil Durk</div>
+                    </div>
+                </div>
+            </div>
+            <div class="now-playing-bar__column">
+                <div class="player-controls"><button aria-label="Enable shuffle" class=""><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z">
+                            </path>
+                        </svg></button><button aria-label="Previous track" class="prev"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+                        </svg></button><button class="toggle-play" aria-label="Pause"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                        </svg></button><button aria-label="Next track" class="next"><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path>
+                        </svg></button><button aria-label="Enable repeat" class=""><svg class="MuiSvgIcon-root"
+                            focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path>
+                        </svg></button></div>
+                <div class="playback-bar">
+                    <div class="playback-bar__current">00:40</div>
+                    <div class="playback-bar__progress">
+                        <div class="playback-bar__progress--bar" style="transform: translateX(-84.3366%);"></div>
+                    </div>
+                    <div class="playback-bar__duration">04:21</div>
+                </div>
+            </div>
+            <div class="now-playing-bar__column"><button class="expand" aria-label="Expand player"><svg
+                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z">
+                        </path>
+                    </svg></button></div>
+        </footer>
+    </div>
+</body>
+
+</html>
