@@ -7,13 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ensemble</title>
     <link rel="stylesheet" href="./assets/styles/styles.css">
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+   <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.8.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="/assets/js/signIn.js"></script>
 </head>
 
 <body>
     <div id="app">
         <nav aria-label="Main menu" class="navbar navbar-desktop">
             <ul class="navbar__menu">
-                <li class="navbar__menu--item"><a class="" href="dashboard.html"><svg class="MuiSvgIcon-root"
+                <li class="navbar__menu--item"><a class="" onclick="navbarClicked('dashboard')"><svg class="MuiSvgIcon-root"
                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
                         </svg><span>Dashboard</span></a></li>
@@ -23,7 +31,7 @@
                                 d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z">
                             </path>
                         </svg><span>Favorites</span></a></li>
-                <li class="navbar__menu--item"><a class="" href="discover.html"><svg class="MuiSvgIcon-root"
+                <li class="navbar__menu--item"><a class="" onclick="navbarClicked('discover')"><svg class="MuiSvgIcon-root"
                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z">
@@ -60,7 +68,7 @@
                             <figure class="user-settings__btn--img" title="Marcus"><img
                                     src="data:image/png;base64,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"
                                     alt="Marcus" aria-hidden="false" width="30" height="30"></figure><span
-                                class="user-settings__btn--name">Marcus</span><svg class="MuiSvgIcon-root"
+                                class="user-settings__btn--name">Loading ...</span><svg class="MuiSvgIcon-root"
                                 focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M7 10l5 5 5-5z"></path>
                             </svg>
@@ -79,8 +87,8 @@
                 </div>
             </div>
         </header>
-        <main id="dashboard" class="main-view">
-            <header class="page-header">
+        <main id="main-frame" class="main-view">
+             <header class="page-header">
                 <h1 class="page-header__title">Your music</h1>
             </header>
             <section class="card card-discover">
@@ -102,97 +110,8 @@
                 <header class="grid-section__header">
                     <h2 class="grid-section__header--title">Recently played</h2>
                 </header>
-                <ul class="grid-section__grid">
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b27358e70580933aa8c99b653a3c"
-                                    alt="The Truth Hurts" loading="lazy" width="300" height="300"><button
-                                    class="play-btn" aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root"
-                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">Talk To Me</h3>
-                                <p class="card__body--desc">Drakeo the Ruler, Drake</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b273bba7cfaf7c59ff0898acba1f"
-                                    alt="Dark Lane Demo Tapes" loading="lazy" width="300" height="300"><button
-                                    class="play-btn" aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root"
-                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">Chicago Freestyle (feat. Giveon)</h3>
-                                <p class="card__body--desc">Drake, Giveon</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b2738b20e4631fa15d3953528bbc"
-                                    alt="Scary Hours 2" loading="lazy" width="300" height="300"><button class="play-btn"
-                                    aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root" focusable="false"
-                                        viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">Lemon Pepper Freestyle (feat. Rick Ross)</h3>
-                                <p class="card__body--desc">Drake, Rick Ross</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b273bfc336878a9695721f721861"
-                                    alt="Over The Top (feat. Drake)" loading="lazy" width="300" height="300"><button
-                                    class="play-btn" aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root"
-                                        focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">Over The Top (feat. Drake)</h3>
-                                <p class="card__body--desc">Smiley, Drake</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b2738b20e4631fa15d3953528bbc"
-                                    alt="Scary Hours 2" loading="lazy" width="300" height="300"><button class="play-btn"
-                                    aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root" focusable="false"
-                                        viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">What’s Next</h3>
-                                <p class="card__body--desc">Drake</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <div class="card__inner">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67616d0000b2738b20e4631fa15d3953528bbc"
-                                    alt="Scary Hours 2" loading="lazy" width="300" height="300"><button class="play-btn"
-                                    aria-label="Play track" tabindex="-1"><svg class="MuiSvgIcon-root" focusable="false"
-                                        viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg><span>Play</span></button></figure>
-                            <div class="card__body">
-                                <h3 class="card__body--title">Wants and Needs (feat. Lil Baby)</h3>
-                                <p class="card__body--desc">Drake, Lil Baby</p>
-                            </div>
-                        </div>
-                    </li>
+                <ul class="grid-section__grid" id="recentlyplayed-gallery">
+                    
                 </ul>
             </section>
             <section class="grid-section">
@@ -204,17 +123,6 @@
                         </svg></a>
                 </header>
                 <ul class="grid-section__grid">
-                    <li class="card card-playlist"><a class="card__inner" aria-label="This Is Drake"
-                            href="/playlist/37i9dQZF1DX7QOv5kjbU68">
-                            <figure class="card__image"><img
-                                    src="https://i.scdn.co/image/ab67706f0000000387bff188c40608c48b82068f"
-                                    alt="This Is Drake" loading="lazy" width="300" height="300"><button
-                                    class="play-btn is-active" aria-label="Pause playlist" tabindex="-1"><svg
-                                        class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24"
-                                        aria-hidden="true">
-                                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-                                    </svg><span>Pause</span></button></figure>
-                        </a></li>
                 </ul>
             </section>
             <section class="grid-section">
@@ -263,7 +171,7 @@
                         </svg></button><button aria-label="Previous track" class="prev"><svg class="MuiSvgIcon-root"
                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
-                        </svg></button><button class="toggle-play" aria-label="Pause"><svg class="MuiSvgIcon-root"
+                        </svg></button><button class="toggle-play" aria-label="Pause" onclick="toggleMusic()"><svg class="MuiSvgIcon-root"
                             focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
                         </svg></button><button aria-label="Next track" class="next"><svg class="MuiSvgIcon-root"
