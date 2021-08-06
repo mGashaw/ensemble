@@ -21,7 +21,7 @@ class Player {
 
     static async setUp() {
         console.log(Player.spotify)
-        await Player.spotify.connect("BQCCSLMY8JEC8CQr5LMinGRsmCSOgXBwo6qw2V02OK-euP96lV4DWgkVHGtb9CMDhNdBUeV5mxky5kofdGNog0-4aeQNRuSsmWg_nNGVDac9fL7oyaNc2wi5xm4BQF9Y7S_GHKa8tOFDHR-lw9DEkvnlHYOhhGROtkk1mjmKfUiYFr24iup7Jqqe3jk");
+        await Player.spotify.connect("BQCJvqNZTszxC63hGkHHShtov2mXg_edPYEzVn4qd3t1shB-j28BihYQf8Ll3vDm_3FnVMVoqEEyiFmVT9Mx7z20VYk6uxVLyoiAsjAWHMGttHnwHkN2ctr27kX-e43zJCoPVQldir8gVu82H1X7Yr3G4pdnd2MmYLIjIga7XKw1PxuPB6J5W7Dt4zo");
     }
 
     static playNewSong(track) {

@@ -110,6 +110,27 @@ const frame = {
             </section>
         `
     },
+    favorites: {
+        parent: 'N/A',
+        html: `
+            <header class="page-header">
+                <h1 class="page-header__title">Favorites</h1>
+            </header>
+
+            <section class="grid-section">
+                <header class="grid-section__header">
+                    <h2 class="grid-section__header--title">Liked Tracks</h2><a class="grid-section__header--link"
+                        href="/favorites/tracks"><span>View all</span><svg class="MuiSvgIcon-root" focusable="false"
+                            viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                        </svg></a>
+                </header>
+                <ul class="list-section__list" id="favorites-gallery">
+                    
+                </ul>
+            </section>
+        `
+    },
     playlist: {
         parent: 'discover',
         html: `            
@@ -132,23 +153,23 @@ const frame = {
     },
     track: {
         parent: 'playlist',
-        html: `            
+        html: `      
             <header class="page-header">
-                <h1 class="page-header__title" id="track-header">Songs</h1>
-            </header>
-            <section class="grid-section">
+                <h1 class="page-header__title"  id="track-header">Tracks</h1>
+            </header>      
+            <section class="list-section">
                 <header class="grid-section__header">
-                    <h2 class="grid-section__header--title">Songs</h2><a
+                    <h2 class="grid-section__header--title">Tracks</h2><a
                         class="grid-section__header--link" href="/discover/categories"><span>View all</span><svg
                             class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
                         </svg></a>
                 </header>
-                <ul class="grid-section__grid" id="track-gallery">
-                   
+                <ul class="list-section__list" id="track-gallery">
 
                 </ul>
-            </section> `
+            </section>
+            `
     }
 }
 

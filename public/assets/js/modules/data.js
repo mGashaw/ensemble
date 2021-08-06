@@ -15,9 +15,22 @@ class DataController {
     }
 
     static pushData(firebase, user, value, path) {
-        firebase.database().ref(`users/${user.uid}/${path}`).push({
-            track: value,
-        })
+        let check = false;
+        const dataRef = firebase.database().ref(`users/${user.uid}/${path}`);
+        dataRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            for (const key in data) {
+                if (value.id === data[key].track.id) {
+                    check = true;
+                    console.log('Err: Duplicate detected');
+                }
+            }
+        });  
+        if (check == false){
+            firebase.database().ref(`users/${user.uid}/${path}`).push({
+                track: value,
+            })
+        }
     }
 
     static getData(firebase, user, path, callback) {
